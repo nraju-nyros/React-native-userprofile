@@ -22,7 +22,7 @@ class Api::V1::UsersController < ApplicationController
  
   # POST /users
   def create
-     # binding.pry
+    
     @user = User.new(user_params)
 
     if @user.save
@@ -51,7 +51,7 @@ class Api::V1::UsersController < ApplicationController
 
   private
   def user_params
-    params.permit(:firstname, :lastname, :email, :password, :image)   
+    params.permit(:firstname, :lastname,:mobile, :address, :email, :password, :image)   
   end   
    
 end 

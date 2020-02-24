@@ -76,8 +76,8 @@ class App extends Component {
     })
   }
 
-  userSignUp = (f,l,e,p) => {
-    this.props.onSignUp(f,l,e,p);
+  userSignUp = (f,l,m,a,e,p) => {
+    this.props.onSignUp(f,l,m,a,e,p);
   };
 
   userSignIn = (e,p) => {
@@ -135,7 +135,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignUp: (f,l,e,p) => dispatch(signupUser(f,l,e,p)),
+    onSignUp: (f,l,m,a,e,p) => dispatch(signupUser(f,l,m,a,e,p)),
     onSignIn: (e,p) => dispatch(loginUser(e,p)),
     logOut: () => dispatch(logoutUser())
   };

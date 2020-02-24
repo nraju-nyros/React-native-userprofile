@@ -20,6 +20,8 @@ class signUp extends Component {
   this.state={
   	firstname:'',
   	lastname:'',
+    mobile:'',
+    address:'',
   	email:'',
   	password:''
   }
@@ -30,7 +32,7 @@ class signUp extends Component {
     if (this.state.firstname.trim() === ""){
       return alert("Please Enter Text");
     }
-    this.props.onUserSignup(this.state.firstname, this.state.lastname, this.state.email, this.state.password)
+    this.props.onUserSignup(this.state.firstname, this.state.lastname,this.state.mobile,this.state.address, this.state.email, this.state.password)
   };
 
   onClickListener = (viewId) => {
@@ -41,23 +43,44 @@ class signUp extends Component {
  render(){
   return (
         <View style={styles.container}>
-          <View style={styles.signup_header}><Text style={styles.signup}>SignUp</Text></View>
-            <View style={styles.inputContainer}>
-	            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
-	            <TextInput style={styles.inputs}
-	                placeholder="First name"
-	                underlineColorAndroid='transparent'
-	                onChangeText={(firstname) => this.setState({firstname})}/>
-	          </View>
+          <View style={styles.signup_header}>
+            <Text style={styles.signup}>SignUp</Text>
+          </View>
+          <View style={styles.inputContainer}>
+            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+            <TextInput style={styles.inputs}
+                placeholder="First name"
+                underlineColorAndroid='transparent'
+                onChangeText={(firstname) => this.setState({firstname})}/>
+          </View>
 
-            <View style={styles.inputContainer}>
-	            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
-	            <TextInput style={styles.inputs}
-	                placeholder="Last name"
-	                keyboardType="email-address"
-	                underlineColorAndroid='transparent'
-	                onChangeText={(lastname) => this.setState({lastname})}/>
-	          </View>
+          <View style={styles.inputContainer}>
+            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+            <TextInput style={styles.inputs}
+                placeholder="Last name"
+                keyboardType="email-address"
+                underlineColorAndroid='transparent'
+                onChangeText={(lastname) => this.setState({lastname})}/>
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+            <TextInput style={styles.inputs}
+                placeholder="Mobile"
+                keyboardType="email-address"
+                underlineColorAndroid='transparent'
+                onChangeText={(mobile) => this.setState({mobile})}/>
+          </View>
+
+           <View style={styles.inputContainer}>
+            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+            <TextInput style={styles.inputs}
+                placeholder="address"
+                keyboardType="email-address"
+                underlineColorAndroid='transparent'
+                onChangeText={(address) => this.setState({address})}/>
+          </View>
+
           <View style={styles.inputContainer}>
             <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
             <TextInput style={styles.inputs}
@@ -66,7 +89,7 @@ class signUp extends Component {
                 underlineColorAndroid='transparent'
                 onChangeText={(email) => this.setState({email})}/>
           </View>
-        
+      
           <View style={styles.inputContainer}>
             <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
             <TextInput style={styles.inputs}

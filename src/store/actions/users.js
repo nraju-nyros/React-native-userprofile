@@ -4,10 +4,12 @@ import ReduxThunk from 'redux-thunk';
 
 
 
-export const signupUser = (f,l,e,p) => {
+export const signupUser = (f,l,m,a,e,p) => {
   const data = {
     "firstname" : f,
     "lastname":l,
+    "mobile":m,
+    "address":a,
     "email":e,
     "password":p
   }
