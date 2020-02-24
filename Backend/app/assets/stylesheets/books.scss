@@ -1,0 +1,177 @@
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+
+.img{
+	height : 60px;
+	width  :60px;
+
+}
+a,td, {
+    text-decoration: none;
+}
+.link{
+	text-decoration: none;
+}
+
+.add{
+	background-color: #009973;
+	color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 10px;
+
+}
+.add:hover{
+	color: white;
+}
+.add1{
+	background-color: #007acc;
+	color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+
+}
+.add1:hover{
+	color: white;
+	
+}
+
+.view{
+	background-color: #009973;
+	color: white;
+	 font-size: 12px;
+	
+
+}
+.view:hover{
+	color: white;
+}
+.edit{
+	background-color: #f0ad4e;
+	color: white;
+	font-size: 12px;
+	
+ 
+}
+.edit:hover{
+	color: white;
+}
+
+.delete{
+	background-color: #d9534f;
+	color: white;
+	font-size: 12px;
+	
+ 
+}
+.delete:hover{
+	color: white;
+}
+
+.line{
+	margin-top: 5px; margin-bottom: 5px;
+}
+
+
+.table_body{
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+
+.btn_save{
+	margin-left: 230px;
+}
+
+#new_page{
+	
+	background-color: #f2f2f2;
+}
+
+#edit_page{
+	margin-left: 450px;
+	margin-right: 450px;
+}
+
+.img_view{
+	height: 200px;
+	width: 200px;
+}
+.view_btn{
+	text-decoration: none;
+}
+
+.All_books{
+	background-color:  #ffffff;
+	padding: 10px;
+
+}
+
+.btn_save{
+	background-color: #009973;
+	color: white;
+	 font-size: 12px;
+
+    margin-left: 200px;
+
+
+}
+.btn_save:hover{
+	color: white;
+
+}
+
+
+	.form {
+		margin: 0 auto;
+		width: 450px;
+		background-color: white;
+		padding-left: 0px;
+	}
+	.new_book{
+		padding-left: 50px;
+	}
+     
+     .edit_book{
+     	padding-left: 50px;
+     }
+	.form label{
+		display: inline-block;
+		text-align: right;
+		float: left;
+	}
+
+	.form input{
+		margin-right: 180px;
+	}
+	
+
+	.col-sm-8{
+		width: 350px;
+	}
+     .col-sm-2{
+     	margin-bottom: 30px;
+     }
+
+     .form-control{
+     	border-radius: 0px;
+     }
+
+     .modal-dailog{
+     	width: 1000px;
+     }
+    
+    .err{
+    	color :red;
+    }
+
+   .image{
+   background-image: image-url("background.jpg")
+    }
+
+    .All_book{ 
+  background-image: image-url('laptop2.jpg'); 
+  
+  background-repeat: no-repeat;
+}

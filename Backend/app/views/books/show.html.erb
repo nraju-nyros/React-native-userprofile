@@ -1,0 +1,45 @@
+<div class="container" align="center">        
+  <br/><br/>
+  <div class="row" >
+     <div >
+        
+        <img class="img_view" src = <%= @book.image %> />
+      
+      </div><br/>
+
+
+
+    <div >
+      <div >
+        <label>Name:</label>
+        <%= @book.name %> 
+      </div><br/>
+
+      <div>
+        <label>Author:</label>
+        <%= @book.author %>
+      </div><br/>
+
+      <div>
+        <label>Description:</label>
+        <%= @book.description %>
+      </div><br/>
+
+      <div>
+        <label>Category:</label>
+        <%= @book.category %>
+      </div><br/>
+      
+
+      <div>
+        <%= link_to 'Back',{controller: 'books', action:'index'},
+      :class => "btn btn-sm btn-warning"  %> 
+      </div>
+
+  </div>
+</div>
+            
+            
+</div> 
+
+
