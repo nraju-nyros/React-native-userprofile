@@ -18,7 +18,7 @@ export const signupUser = (f,l,e,p) => {
       if(res.error) {
         throw(res.error);
       }
-      dispatch({type: SIGNUP_USER, users:res.data});
+      dispatch({type: SIGNUP_USER, user:res.data});
       return res.data;
     })
     .catch(error => {

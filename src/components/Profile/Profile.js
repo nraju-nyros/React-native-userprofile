@@ -3,11 +3,10 @@ import {Alert, Modal, View, Image, Text, Button,TextInput, StyleSheet,FormLabel,
 import img1 from '../../assets/img1.jpg';
 
 
-
 class Profile extends Component {
- constructor(props){
-  super(props)
- }
+  constructor(props){
+    super(props)
+  }
  
  render(){
   return (

@@ -1,17 +1,9 @@
 import {SIGNUP_USER,LOGIN_USER, LOGIN_SUCCESS, LOGOUT_USER} from "../actions/actionTypes";
 import axios from 'axios';
 
-
-// const initialState = {
-//   users: [],
-//   user:{},
-//   loggedIn:false
-// };
-
 const initialState = {
-  places: {},
-  loggedIn: null,
-  user:''
+  user: {},
+  loggedIn: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,18 +12,15 @@ const reducer = (state = initialState, action) => {
     case SIGNUP_USER:
       return {
         ...state,
-        users: action.users    
+        user: action.user  
     };
 
     case LOGIN_USER:
     console.log("Reducer_data", action.user)
       return {
         ...state,
-        // user: action.user,
-        // loggedIn:true
-        places: action.user,
-        loggedIn:true,
-        user:"Login"  
+        user: action.user,
+        loggedIn:true
     };
 
     case LOGIN_SUCCESS:

@@ -35,7 +35,6 @@ class App extends Component {
   componentDidMount(){
   console.log("APP.js")
   console.log(this.props.loggedIn)
-  console.log(this.props.places)
   }
 
 
@@ -92,22 +91,28 @@ class App extends Component {
   render() {
     return (
     
-      <View>
-          { this.state.home? 
+      <View >
+        { this.props.loggedIn === null ? 
           <View>
-            <Home OpenLogIn={this.Login} OpenSignUp={this.SignUp}  loggedIn={this.props.loggedIn}/> 
+            { this.state.home? 
+            <View>
+              <Home OpenLogIn={this.Login} OpenSignUp={this.SignUp}/> 
+            </View> :null }
+
+            { this.state.login? 
+              <View>
+                <UserLogin Home={this.Home}  Profile={this.Profile} onUserSignIn={this.userSignIn}/> 
+              </View> :null }
+
+            { this.state.signUp? 
+              <View>
+                <SignUp Home={this.Home} onUserSignup={this.userSignUp}/> 
+              </View> :null }
           </View> :null }
-           { this.state.login? 
-          <View>
-            <UserLogin Home={this.Home}  Profile={this.Profile} onUserSignIn={this.userSignIn}/> 
-          </View> :null }
-          { this.state.signUp? 
-          <View>
-            <SignUp Home={this.Home} onUserSignup={this.userSignUp}/> 
-          </View> :null }
+
           { this.props.loggedIn? 
           <View>
-            <Profile onUserLogout={this.modalClosedHandler} user={this.props.places}/> 
+            <Profile onUserLogout={this.modalClosedHandler} user={this.props.user}/> 
           </View> :null }
       </View>
 
@@ -121,16 +126,8 @@ const styles = StyleSheet.create({
   }
 });
 
-// const mapStateToProps = state => {
-//   return {
-//     user:state.user,
-//     loggedIn:state.loggedIn
-//   };
-// };
-
 const mapStateToProps = state => {
   return {
-    places: state.users.places,
     loggedIn: state.users.loggedIn,
     user:state.users.user
   };
