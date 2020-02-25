@@ -1,1 +1,1 @@
-export {signupUser, loginUser, logoutUser} from "./users";
+export {signupUser, loginUser, logoutUser, updateUser, setErrMsg} from "./users";

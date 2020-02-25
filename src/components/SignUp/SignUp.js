@@ -47,7 +47,7 @@ class signUp extends Component {
             <Text style={styles.signup}>SignUp</Text>
           </View>
           <View style={styles.inputContainer}>
-            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+            <Image style={styles.inputIcon} source={{uri: 'https://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/user-icon.png'}}/>
             <TextInput style={styles.inputs}
                 placeholder="First name"
                 underlineColorAndroid='transparent'
@@ -55,7 +55,7 @@ class signUp extends Component {
           </View>
 
           <View style={styles.inputContainer}>
-            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+            <Image style={styles.inputIcon} source={{uri: 'https://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/user-icon.png'}}/>
             <TextInput style={styles.inputs}
                 placeholder="Last name"
                 keyboardType="email-address"
@@ -64,7 +64,7 @@ class signUp extends Component {
           </View>
 
           <View style={styles.inputContainer}>
-            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+            <Image style={styles.inputIcon} source={{uri: 'https://image.flaticon.com/icons/png/512/65/65680.png'}}/>
             <TextInput style={styles.inputs}
                 placeholder="Mobile"
                 keyboardType="email-address"
@@ -73,7 +73,7 @@ class signUp extends Component {
           </View>
 
            <View style={styles.inputContainer}>
-            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+            <Image style={styles.inputIcon} source={{uri: 'https://pngimage.net/wp-content/uploads/2018/05/address-icon-png-transparent-2.png'}}/>
             <TextInput style={styles.inputs}
                 placeholder="address"
                 keyboardType="email-address"
@@ -82,7 +82,7 @@ class signUp extends Component {
           </View>
 
           <View style={styles.inputContainer}>
-            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+            <Image style={styles.inputIcon} source={{uri: 'https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/mail-512.png'}}/>
             <TextInput style={styles.inputs}
                 placeholder="Email"
                 keyboardType="email-address"
@@ -91,7 +91,7 @@ class signUp extends Component {
           </View>
       
           <View style={styles.inputContainer}>
-            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
+            <Image style={styles.inputIcon} source={{uri: 'https://cdn3.iconfinder.com/data/icons/general-icons-set-1/100/21_lock-512.png'}}/>
             <TextInput style={styles.inputs}
                 placeholder="Password"
                 secureTextEntry={true}
@@ -142,8 +142,8 @@ const styles = StyleSheet.create({
       flex:1,
   },
   inputIcon:{
-    width:30,
-    height:30,
+    width:20,
+    height:20,
     marginLeft:15,
     justifyContent: 'center'
   },

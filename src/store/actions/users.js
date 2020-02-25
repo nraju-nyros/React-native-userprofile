@@ -1,4 +1,4 @@
-import { SIGNUP_USER, LOGIN_USER, LOGIN_SUCCESS, LOGOUT_USER} from './actionTypes';
+import { SIGNUP_USER, LOGIN_USER, LOGIN_SUCCESS, LOGOUT_USER, UPDATE_USER, LOGIN_FAILED, SET_ERR_MSG} from './actionTypes';
 import axios from 'axios';
 import ReduxThunk from 'redux-thunk';
 
@@ -13,7 +13,7 @@ export const signupUser = (f,l,m,a,e,p) => {
     "email":e,
     "password":p
   }
-
+     
   return dispatch => {
     axios.post('http://10.90.90.4:3000/api/v1/users',data)
     .then(res => {
@@ -39,14 +39,18 @@ export const loginUser = (e,p) => {
     axios.post('http://10.90.90.4:3000/api/v1/auth/login',data)
     .then(res => {
       if(res.error) {
-        throw(res.error);
+        
+        console.log("Login_response", res.data); 
+        dispatch({type: LOGIN_FAILED});
+
       }
       console.log("Login_response", res.data); 
       dispatch({type: LOGIN_USER, user:res.data});
 
     })
     .catch(error => {
-        console.log("error", error)
+        console.log("Login_response", error); 
+        dispatch({type: LOGIN_FAILED});
     })
   }
 };
@@ -59,18 +63,27 @@ export const logoutUser = () => {
     
 };
 
-export const updateUser = (id, placeName) => {
+export const updateUser = (id,f,l,m,a,e,p,i) => {
+  console.log("id", id, JSON.stringify(i.fileName))
   const data = {
-    "name" : placeName
+    "firstname" : f,
+    "lastname":l,
+    "mobile":m,
+    "address":a,
+    "email":e,
+    "password":p,
+    "image":i.data,
+    "file_name":i.fileName
   }
 
   return dispatch => {
-    axios.put('http://localhost:3000/api/v1/todo_lists/'+id,data)
+    axios.put('http://10.90.90.4:3000/api/v1/users/'+id,data)
     .then(res => {
       if(res.error) {
         throw(res.error);
       }
-     
+      console.log("response", res.data)
+       dispatch({type: UPDATE_USER, user:res.data});
       return res.data;
     })
     .catch(error => {
@@ -97,3 +110,11 @@ export const deleteUser = (id) => {
   }
    
 };
+
+export const setErrMsg = () =>{
+  alert("ssss")
+  return dispatch => {
+     dispatch({type:SET_ERR_MSG})
+  }
+ 
+}

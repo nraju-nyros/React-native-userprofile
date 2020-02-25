@@ -9,6 +9,27 @@ class Api::V1::UsersController < ApplicationController
     render json: @users, status: :ok
   end
 
+
+
+  # POST /auth/login
+  def login
+    @user = User.find_by_email(params[:email])
+
+    if @user&.authenticate(params[:password])
+      token = JsonWebToken.encode(user_id: @user.id)
+      time = Time.now + 24.hours.to_i
+      @user.update_attribute(:token, token)
+      render json: { token: token, exp: time.strftime("%m-%d-%Y %H:%M"),
+                      user_id: @user.id, email: @user.email, mobile: @user.mobile, address: @user.address, firstname: @user.firstname,lastname: @user.lastname, image: url_for(@user.image)}, status: :ok
+    else
+      render json: { error: 'unauthorized' }, status: :unauthorized
+    end
+  end
+
+  def login_params
+    params.permit(:email, :password)
+  end
+
   # GET /users/{username}
   def show
      @user = User.find(params[:id])   
@@ -24,9 +45,11 @@ class Api::V1::UsersController < ApplicationController
   def create
     
     @user = User.new(user_params)
-
+    @user.dummy_image
     if @user.save
-      render json: @user, status: :created
+      render json: {
+              user_id: @user.id, email: @user.email, mobile: @user.mobile, address: @user.address, firstname: @user.firstname,lastname: @user.lastname, image: url_for(@user.image), status: :ok}
+    
     else
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
@@ -35,9 +58,14 @@ class Api::V1::UsersController < ApplicationController
 
   def update   
     @user = User.find(params[:id])   
-    if @user.update_attributes(user_params)   
+    if
+      @user.update(user_params)
+
+      @user.image.attach(io: image_io, filename: image_name)
+       render json: {
+                      user_id: @user.id, email: @user.email, mobile: @user.mobile, address: @user.address, firstname: @user.firstname,lastname: @user.lastname, image: url_for(@user.image)}, status: :ok
     else     
-    render json: @user.errors, status: :unprocessable_entity
+      render json: @user.errors, status: :unprocessable_entity
     end   
   end   
 
@@ -51,7 +79,20 @@ class Api::V1::UsersController < ApplicationController
 
   private
   def user_params
-    params.permit(:firstname, :lastname,:mobile, :address, :email, :password, :image)   
-  end   
+    params.permit(:firstname, :lastname,:mobile, :address, :email, :password)   
+  end
+
+  def image_io
+    decoded_image = Base64.decode64(params[:user][:image])
+     StringIO.new(decoded_image)
+  end
+  
+  def image_name
+    params[:user][:file_name]
+  end
+
+
+
+  
    
 end 

@@ -11,7 +11,7 @@ class Api::V1::AuthenticationController < ApplicationController
       time = Time.now + 24.hours.to_i
       @user.update_attribute(:token, token)
       render json: { token: token, exp: time.strftime("%m-%d-%Y %H:%M"),
-                      user_id: @user.id, email: @user.email, mobile: @user.mobile, address: @user.address, firstname: @user.firstname,lastname: @user.lastname}, status: :ok
+                      user_id: @user.id, email: @user.email, mobile: @user.mobile, address: @user.address, firstname: @user.firstname,lastname: @user.lastname, image:@user.image}, status: :ok
     else
       render json: { error: 'unauthorized' }, status: :unauthorized
     end

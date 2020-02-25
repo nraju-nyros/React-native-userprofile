@@ -1,5 +1,7 @@
 {
   "name": "FORM",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "react-native-validator-form": "^1.0.0"
+  }
 }

@@ -1,13 +1,16 @@
-import {SIGNUP_USER,LOGIN_USER, LOGIN_SUCCESS, LOGOUT_USER} from "../actions/actionTypes";
+import {SIGNUP_USER,LOGIN_USER, LOGIN_SUCCESS,LOGIN_FAILED, LOGOUT_USER, UPDATE_USER, SET_ERR_MSG} from "../actions/actionTypes";
 import axios from 'axios';
 
 const initialState = {
   user: {},
-  loggedIn: null
+  loggedIn: null,
+  error:false,
+  errorMessage:''
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+
 
     case SIGNUP_USER:
       return {
@@ -20,7 +23,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.user,
-        loggedIn:true
+        loggedIn:true,
+        errorMessage:''
     };
 
     case LOGIN_SUCCESS:
@@ -29,11 +33,32 @@ const reducer = (state = initialState, action) => {
         ...state
     };
 
+    case LOGIN_FAILED:
+        console.log("Reducer_data", "ddddddddddddddddd")
+      return {
+        ...state,
+        error: true,
+        errorMessage:'Incorrect Email or password!'
+    };
+
     case LOGOUT_USER:
       return {
         ...state,
         loggedIn:null
     };
+
+    case UPDATE_USER:
+      return {
+        ...state,
+        loggedIn:true,
+        user:action.user
+    };
+
+    case SET_ERR_MSG:
+      return{
+        ...state,
+        errorMessage:null
+      };
 
   
     default:
