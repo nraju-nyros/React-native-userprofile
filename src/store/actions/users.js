@@ -21,6 +21,7 @@ export const signupUser = (f,l,m,a,e,p) => {
         throw(res.error);
       }
       dispatch({type: SIGNUP_USER, user:res.data});
+       dispatch({type: LOGIN_USER, user:res.data});
       return res.data;
     })
     .catch(error => {
@@ -65,6 +66,15 @@ export const logoutUser = () => {
 
 export const updateUser = (id,f,l,m,a,e,p,i) => {
   console.log("id", id, JSON.stringify(i.fileName))
+  console.log("iddddd", id, JSON.stringify(i.data))
+
+  if(i){
+    var image_data = i.data;
+    var file_name = i.fileName;
+  }else{
+    var image_data = "Img_empty";
+    var file_name = "Img_empty"
+  }
   const data = {
     "firstname" : f,
     "lastname":l,
@@ -72,8 +82,8 @@ export const updateUser = (id,f,l,m,a,e,p,i) => {
     "address":a,
     "email":e,
     "password":p,
-    "image":i.data,
-    "file_name":i.fileName
+    "image":image_data,
+    "file_name":file_name
   }
 
   return dispatch => {
@@ -82,8 +92,8 @@ export const updateUser = (id,f,l,m,a,e,p,i) => {
       if(res.error) {
         throw(res.error);
       }
-      console.log("response", res.data)
        dispatch({type: UPDATE_USER, user:res.data});
+        console.log("response", res.data.image)
       return res.data;
     })
     .catch(error => {
@@ -112,7 +122,7 @@ export const deleteUser = (id) => {
 };
 
 export const setErrMsg = () =>{
-  alert("ssss")
+
   return dispatch => {
      dispatch({type:SET_ERR_MSG})
   }

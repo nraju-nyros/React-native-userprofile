@@ -12,17 +12,18 @@ class Home extends Component {
  render(){
   return (
       <View >
-        
-         <View style={{backgroundColor:'#368778',padding:20}}>
+        <View style={{backgroundColor:'#368778',padding:20, flexDirection:'row', justifyContent:'space-around'}}>
           <Text style={{color:'#fff',fontSize:25}}>Home</Text>
+                      <Button title="Logout" style={styles.button} onPress={ () => this.props.onUserLogout()} color="green"/>
+
         </View>
          
         <View style={styles.buttons}>
-          <Button title="Login" style={styles.button} onPress={this.props.OpenLogIn}   Back={() => props.Home}/>
-          <Button title="SignUp" style={styles.button} onPress={this.props.OpenSignUp} color="green" Back={() => props.Home}/>
-         
-    
+        <Text>Welcome to App</Text>
+          <Button title="Go To Profile" style={styles.button} onPress={this.props.Profile}/>
+
         </View>
+
       </View>
     
   );

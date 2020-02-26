@@ -58,9 +58,8 @@ class Api::V1::UsersController < ApplicationController
 
   def update   
     @user = User.find(params[:id])   
-    if
+    if 
       @user.update(user_params)
-
       @user.image.attach(io: image_io, filename: image_name)
        render json: {
                       user_id: @user.id, email: @user.email, mobile: @user.mobile, address: @user.address, firstname: @user.firstname,lastname: @user.lastname, image: url_for(@user.image)}, status: :ok

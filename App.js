@@ -23,11 +23,11 @@ class App extends Component {
   constructor(props){
     super(props);
       this.state={
-        home:true,
-        login:false,
+        home:false,
+        login:true,
         signUp:false,
         profile:false,
-        loggedIn:false
+        logged_In:this.props.loggedIn
       }
   }
 
@@ -36,6 +36,7 @@ class App extends Component {
     this.setState({
       errorMessage:''
     })
+    
   }
 
 
@@ -46,7 +47,8 @@ class App extends Component {
       home:false,
       login:true,
       signUp:false,
-      profile:false
+      profile:false,
+      logged_In:this.props.loggedIn
     })
   }
 
@@ -61,7 +63,7 @@ class App extends Component {
 
   Home = () => {
     this.setState({
-      home:true,
+     logged_In:this.props.loggedIn,
       login:false,
       signUp:false,
       profile:false
@@ -73,7 +75,8 @@ class App extends Component {
       home:false,
       login:false,
       signUp:false,
-      profile:true
+      profile:true,
+      logged_In:false
     })
   }
 
@@ -86,6 +89,7 @@ class App extends Component {
   };
 
   modalClosedHandler = () => {
+   
     this.props.logOut();
   };
 
@@ -103,26 +107,34 @@ class App extends Component {
       <View >
         { this.props.loggedIn === null ? 
           <View>
-            { this.state.home? 
-            <View>
-              <Home OpenLogIn={this.Login} OpenSignUp={this.SignUp}/> 
-            </View> :null }
-
             { this.state.login? 
               <View>
-                <UserLogin Home={this.Home}  setErrorMsg={this.errorHandler} error={this.props.errorMessage} Profile={this.Profile} onUserSignIn={this.userSignIn}/> 
+                <UserLogin Home={this.Home}  OpenSignUp={this.SignUp} err_clear={this.errorHandler} error={this.props.errorMessage} Profile={this.Profile} onUserSignIn={this.userSignIn}/> 
               </View> :null }
 
             { this.state.signUp? 
               <View>
-                <SignUp Home={this.Home} onUserSignup={this.userSignUp}/> 
+                <SignUp Home={this.Home} OpenLogIn={this.Login} onUserSignup={this.userSignUp}/> 
               </View> :null }
-          </View> :null }
+          </View> :null 
+        }
 
-          { this.props.loggedIn? 
+        { this.props.loggedIn? 
           <View>
-            <Profile onUserLogout={this.modalClosedHandler} user={this.props.user} onUserUpdate={this.updateHandler}/> 
-          </View> :null }
+              { this.state.logged_In?
+                <View>
+                  <Home OpenLogIn={this.Login} onUserLogout={this.modalClosedHandler} OpenSignUp={this.SignUp} Profile={this.Profile}/> 
+                </View> :null
+              }
+          
+           
+            { this.state.profile?
+              <View>
+                <Profile Home={this.Home}  user={this.props.user} onUserUpdate={this.updateHandler}/> 
+              </View> :null
+            }
+          </View> :null
+        }
       </View>
 
     );

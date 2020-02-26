@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
     };
 
     case LOGIN_USER:
-    console.log("Reducer_data", action.user)
+    console.log("Login_image", action.user.image)
       return {
         ...state,
         user: action.user,
@@ -28,7 +28,7 @@ const reducer = (state = initialState, action) => {
     };
 
     case LOGIN_SUCCESS:
-    console.log("Reducer_data", this.initialState.loggedIn)
+    console.log("Login_image", this.initialState.loggedIn)
       return {
         ...state
     };
@@ -42,12 +42,14 @@ const reducer = (state = initialState, action) => {
     };
 
     case LOGOUT_USER:
+        // console.log("Local_response_image", this.initialState.user.image)
       return {
         ...state,
         loggedIn:null
     };
 
     case UPDATE_USER:
+     console.log("Update_response_image", action.user.image)
       return {
         ...state,
         loggedIn:true,
@@ -57,7 +59,7 @@ const reducer = (state = initialState, action) => {
     case SET_ERR_MSG:
       return{
         ...state,
-        errorMessage:null
+        errorMessage:''
       };
 
   
