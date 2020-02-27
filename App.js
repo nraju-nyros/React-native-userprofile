@@ -11,14 +11,6 @@ import SignUp from "./src/components/SignUp/SignUp";
 import Home from "./src/components/Home/Home";
 import Profile from "./src/components/Profile/Profile";
 
-// import { createStackNavigator } from 'react-navigation';
-
-
-// const AppNavigator = createStackNavigator({
-//   Home: { screen: Home },
-// });
-
-
 class App extends Component {
   constructor(props){
     super(props);
@@ -35,11 +27,17 @@ class App extends Component {
   componentDidMount(){
     this.setState({
       errorMessage:''
-    })
-    
+    })  
   }
 
-
+  componentWillReceiveProps(nextProps){
+    console.log("nextProps", nextProps)
+    if(nextProps.loggedIn != this.state.logged_In){
+      this.setState({
+        logged_In:nextProps.loggedIn
+      })
+    }
+  }
 
   // Users
   Login = () => {
@@ -63,18 +61,14 @@ class App extends Component {
 
   Home = () => {
     this.setState({
-     logged_In:this.props.loggedIn,
-      login:false,
-      signUp:false,
+     logged_In:true,
+      
       profile:false
     })
   }
 
   Profile = () => {
     this.setState({
-      home:false,
-      login:false,
-      signUp:false,
       profile:true,
       logged_In:false
     })
@@ -89,7 +83,6 @@ class App extends Component {
   };
 
   modalClosedHandler = () => {
-   
     this.props.logOut();
   };
 
@@ -103,31 +96,31 @@ class App extends Component {
 
   render() {
     return (
-    
       <View >
         { this.props.loggedIn === null ? 
           <View>
             { this.state.login? 
               <View>
                 <UserLogin Home={this.Home}  OpenSignUp={this.SignUp} err_clear={this.errorHandler} error={this.props.errorMessage} Profile={this.Profile} onUserSignIn={this.userSignIn}/> 
-              </View> :null }
+              </View> :null
+            }
 
             { this.state.signUp? 
               <View>
                 <SignUp Home={this.Home} OpenLogIn={this.Login} onUserSignup={this.userSignUp}/> 
-              </View> :null }
+              </View> :null
+            }
           </View> :null 
         }
 
         { this.props.loggedIn? 
           <View>
-              { this.state.logged_In?
-                <View>
-                  <Home OpenLogIn={this.Login} onUserLogout={this.modalClosedHandler} OpenSignUp={this.SignUp} Profile={this.Profile}/> 
-                </View> :null
-              }
-          
-           
+            { this.state.logged_In?
+              <View>
+                <Home OpenLogIn={this.Login} onUserLogout={this.modalClosedHandler} OpenSignUp={this.SignUp} Profile={this.Profile}/> 
+              </View> :null
+            }
+        
             { this.state.profile?
               <View>
                 <Profile Home={this.Home}  user={this.props.user} onUserUpdate={this.updateHandler}/> 

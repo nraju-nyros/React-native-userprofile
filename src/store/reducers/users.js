@@ -10,8 +10,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-
-
     case SIGNUP_USER:
       return {
         ...state,
@@ -27,25 +25,29 @@ const reducer = (state = initialState, action) => {
         errorMessage:''
     };
 
-    case LOGIN_SUCCESS:
-    console.log("Login_image", this.initialState.loggedIn)
-      return {
-        ...state
-    };
+    // case LOGIN_SUCCESS:
+    // console.log("Login_image", this.initialState.loggedIn)
+    //   return {
+    //     ...state
+    // };
 
     case LOGIN_FAILED:
-        console.log("Reducer_data", "ddddddddddddddddd")
+        console.log("Login Failed", "ddddddddddddddddd")
       return {
         ...state,
         error: true,
-        errorMessage:'Incorrect Email or password!'
+        errorMessage:'Incorrect Email or password!',
+        user:{},
+        loggedIn:null
     };
 
     case LOGOUT_USER:
         // console.log("Local_response_image", this.initialState.user.image)
+        
       return {
         ...state,
-        loggedIn:null
+        loggedIn:null,
+        user:{}
     };
 
     case UPDATE_USER:

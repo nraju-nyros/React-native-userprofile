@@ -34,6 +34,8 @@ class Profile extends Component {
       pickedImage:null
     })
   }
+
+  
   
   // Edit Image 
   pickImageHandler = () => {
