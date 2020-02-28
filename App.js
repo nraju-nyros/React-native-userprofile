@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import { connect } from "react-redux";
 import img1 from './src/assets/img1.jpg';
-
 import {signupUser,loginUser, logoutUser, updateUser, setErrMsg} from "./src/store/actions/index";
 
 // Users
