@@ -54,7 +54,7 @@ const reducer = (state = initialState, action) => {
      console.log("Update_response_image", action.user.image)
       return {
         ...state,
-        
+       
         user:action.user
     };
 

@@ -24,12 +24,14 @@ class App extends Component {
 
 
   componentDidMount(){
+    console.log(this.state.logged_In, this.state.profile)
     this.setState({
       errorMessage:''
     })  
   }
 
   componentWillReceiveProps(nextProps){
+    console.log(this.state.logged_In, this.state.profile)
     console.log("nextProps", nextProps)
     if(nextProps.loggedIn != this.state.logged_In){
       this.setState({
@@ -61,7 +63,6 @@ class App extends Component {
   Home = () => {
     this.setState({
      logged_In:true,
-      
       profile:false
     })
   }
@@ -86,7 +87,8 @@ class App extends Component {
   };
 
   updateHandler = (id,f,l,m,a,e,p,i) => {
-    this.props.onUpdate(id,f,l,m,a,e,p,i)
+    this.props.onUpdate(id,f,l,m,a,e,p,i);
+   
   }
 
   errorHandler = () => {
